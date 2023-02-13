@@ -12,3 +12,4 @@ No more javascript
 Being unique is better than being perfect
 find it
 Count that word
+I hate bins
