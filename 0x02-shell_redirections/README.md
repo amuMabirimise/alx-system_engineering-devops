@@ -9,3 +9,4 @@ It is a good file that cuts iron without making a noise
 Duplicate last line
 No more javascript
  What’s new
+Being unique is better than being perfect
