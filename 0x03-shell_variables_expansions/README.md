@@ -8,3 +8,4 @@ Global variable
 Every addition
 Divide and rule
 Love is anterior to life,
+here are 10 types of people in the world
