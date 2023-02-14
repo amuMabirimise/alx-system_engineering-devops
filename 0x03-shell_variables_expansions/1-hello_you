@@ -1,2 +1,2 @@
 #!/bin/bash
-id . /tmp/1-hello_you
+echo hello user
