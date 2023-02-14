@@ -1,2 +1,2 @@
 #!/bin/bash
-echo /tmp/1-hello_you
+echo 'Hello World'
