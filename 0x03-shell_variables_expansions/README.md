@@ -5,3 +5,4 @@ If the path be beautiful
 Local variables
 Local variable
 Global variable
+Every addition
