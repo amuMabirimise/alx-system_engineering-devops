@@ -6,3 +6,4 @@ Local variables
 Local variable
 Global variable
 Every addition
+Divide and rule
