@@ -1,2 +1,2 @@
 #!/bin/bash
-whoami tmp/hello user
+id . /tmp/1-hello_you
