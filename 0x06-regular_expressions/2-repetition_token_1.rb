@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-
-input_string = ARGV[0]
-
-puts input_string.match(/.+Holberton.+/) ? input_string : ""
+# Accept the argument from the command line
+reg = /hbt{0,1}n/
+puts ARGV[0].scan(reg).join
