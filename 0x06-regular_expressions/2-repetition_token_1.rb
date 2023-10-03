@@ -2,6 +2,4 @@
 
 input_string = ARGV[0]
 
-pattern = /.+Holberton.+/ 
-
-puts input_string.match(pattern) || ""
+puts input_string.match(/.+Holberton.+/) ? input_string : ""
