@@ -1,6 +1,5 @@
-#!/user/bin/env bash
-# script that connect to the server 100.25.33.252 using the user private key
-# stored in a file school found  in the user home directory
-
+#!/usr/bin/env bash
+# This Script connects to the server 100.25.33.252 using the users private key
+# stored in a file school Found in the users home directory
 
 ssh -i ~/.ssh/school ubuntu@34.239.250.75
