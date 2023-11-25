@@ -1,0 +1,6 @@
+# ~/.ssh/config
+
+Host your_server_ip_address
+  IdentityFile ~/.ssh/school
+  PasswordAuthentication no
+
