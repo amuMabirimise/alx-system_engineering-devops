@@ -1,21 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
+apt-get update
+apt-get install -y nginx
 
-echo "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+mkdir /etc/nginx/html
+touch /etc/nginx/html/index.html
+echo "Hello World!" > /etc/nginx/html/index.html
+printf %s "server {
+     listen      80 default_server;
+     listen      [::]:80 default_server;
+     root        /etc/nginx/html;
+     index       index.html index.htm;
+}
+" > /etc/nginx/sites-available/default
 
-    root /var/www/html;
-    index index.html;
-
-    location / {
-        return 200 'Hello World!';
-        add_header Content-Type text/plain;
-    }
-
-}" > /etc/nginx/sites-available/default
-
-sudo service nginx start
-
+service nginx restart
