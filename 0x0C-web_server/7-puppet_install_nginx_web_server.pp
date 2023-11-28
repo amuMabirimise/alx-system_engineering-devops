@@ -1,5 +1,20 @@
-#puppet configuration
-exec { 'config_server':
-  provider => shell,
-  command  => 'sudo apt-get update; sudo apt-get -y install nginx; echo "Holberton School" | sudo tee /var/www/html/index.html; new_string="server_name _;\n\trewrite ^\/redirect_me http:\/\/35.237.80.55\/some_page.html permanent;"; sudo sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-available/default; sudo nginx -t; sudo service nginx restart',
-  }
+# Puppet manifest to install nginx
+package { 'nginx':
+  ensure => installed,
+}
+
+file_line { 'aaaaa':
+  ensure => 'present',
+  path   => '/etc/nginx/sites-available/default',
+  after  => 'listen 80 default_server;',
+  line   => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
+}
+
+file { '/var/www/html/index.html':
+  content => 'Hello World!',
+}
+
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
+}
