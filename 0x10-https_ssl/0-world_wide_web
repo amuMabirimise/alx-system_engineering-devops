@@ -1,21 +1,18 @@
 #!/bin/bash
 # Function to display information about a subdomain
 
-if [ "$#" = 1 ]; then
-    # Default subdomains to check
+if [ "$#" = 1 ]
+then
     subdomains=("www" "lb-01" "web-01" "web-02")
-    
-    # Loop through default subdomains and display information
-    for sub_domain in "${subdomains[@]}"; do
-        result=$(dig $sub_domain.$1 | grep -A1 'ANSWER SECTION' | tail -1)
-        record_type=$(echo "$result" | awk '{print $4}')
-        destination=$(echo "$result" | awk '{print $5}')
-        echo "The subdomain $sub_domain is a $record_type record and points to $destination"
+    for sub_domain in "${subdomains[@]}"
+    do
+	record_type=$(dig $sub_domain.$1 | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $4}')
+        destination=$(dig $sub_domain.$1 | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $5}')
+	echo "The subdomain $sub_domain is a $record_type record and points to $destination"
     done
-elif [ "$#" = 2 ]; then
-    # Display information for the specified subdomain
-    result=$(dig $2.$1 | grep -A1 'ANSWER SECTION' | tail -1)
-    record_type=$(echo "$result" | awk '{print $4}')
-    destination=$(echo "$result" | awk '{print $5}')
+elif [ "$#" = 2 ]
+then
+    record_type=$(dig $2.$1 | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $4}')
+    destination=$(dig $2.$1 | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $5}')
     echo "The subdomain $2 is a $record_type record and points to $destination"
 fi
