@@ -4,38 +4,29 @@ Scripting that, using a given REST API, for a given employee ID,
 returns information about his/her TODO list progress and exports it to JSON.
 """
 
-import requests
-import json
-from sys import argv
-
 if __name__ == "__main__":
-    if len(argv) != 2 or not argv[1].isdigit():
-        print("Usage: {} employee_id".format(argv[0]))
-        exit(1)
 
-    employee_id = int(argv[1])
+    import json
+    import requests
+    import sys
 
-    base_url = "https://jsonplaceholder.typicode.com"
-    user_url = "{}/users/{}".format(base_url, employee_id)
-    todos_url = "{}/todos?userId={}".format(base_url, employee_id)
+    user_id = sys.argv[1]
+    url = 'https://jsonplaceholder.typicode.com/users/{}/'.format(user_id)
+    todos_url = url + 'todos'
+    user = requests.get(url).json()
+    todos = requests.get(todos_url).json()
 
-    try:
-        user_response = requests.get(user_url)
-        todos_response = requests.get(todos_url)
-        user_data = user_response.json()
-        todos_data = todos_response.json()
+    todo_list = []
+    for todo in todos:
+        new_dict = {}
+        new_dict['task'] = todo.get('title')
+        new_dict['completed'] = todo.get('completed')
+        new_dict['username'] = user.get('username')
+        todo_list.append(new_dict)
 
-        employee_id = user_data.get("id")
-        employee_username = user_data.get("username")
-        json_filename = "{}.json".format(employee_id)
+    todo_dict = {user.get('id'): todo_list}
 
-        json_data = {str(employee_id): [{"task": task["title"], "completed": task["completed"], "username": employee_username} for task in todos_data]}
+    file_name = '{}.json'.format(user.get('id'))
 
-        with open(json_filename, mode='w') as json_file:
-            json.dump(json_data, json_file, indent=4)
-
-        print("Data exported to {}".format(json_filename))
-
-    except requests.exceptions.RequestException as e:
-        print("Error: {}".format(e))
-        exit(1)
+    with open(file_name, mode='w') as outfile:
+        json.dump(todo_dict, outfile)
