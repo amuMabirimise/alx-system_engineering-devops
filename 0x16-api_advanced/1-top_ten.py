@@ -17,14 +17,12 @@ def top_ten(subreddit):
                     title = post['data']['title']
                     print(title)
             else:
-                print(f"No posts found for subreddit '{subreddit}'.")
+                print("None")
 
-        elif response.status_code == 403:
-            print(f"Access to subreddit '{subreddit}' is forbidden.")
         elif response.status_code == 302:
             print(f"Redirect for subreddit '{subreddit}'. Invalid subreddit.")
         else:
-            print(f"Error: {response.status_code}")
+            print("None")
 
     except requests.exceptions.RequestException as e:
         print(f"Request Error: {e}")
