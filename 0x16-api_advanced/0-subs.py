@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Function of query subscribers on a given Reddit subreddit."""
+#!/usr/bin/python3
+"""Function of query subscribers on a given Reddit subreddit."""
 import requests
 import time
 
