@@ -3,6 +3,7 @@
 import requests
 import time
 
+
 def number_of_subscribers(subreddit):
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     headers = {"User-Agent": "CustomUserAgent/1.0"}
@@ -33,6 +34,7 @@ def number_of_subscribers(subreddit):
         print(f"Request Error: {e}")
         return 0
 
+
 if __name__ == '__main__':
     import sys
 
@@ -42,4 +44,3 @@ if __name__ == '__main__':
         subreddit_name = sys.argv[1]
         subscribers_count = number_of_subscribers(subreddit_name)
         print(f"{subreddit_name} has {subscribers_count} subscribers.")
-
