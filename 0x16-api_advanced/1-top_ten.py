@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """
-    Request top ten posts of a subreddit from Reddit API
+    Requesting a top ten posts of a subreddit from Reddit API
 """
 
 
 def top_ten(subreddit):
-    """Return the first 10 posts for a given subreddit"""
+    """Returning of the first 10 posts for a given subreddit"""
     import requests
 
     header = {
