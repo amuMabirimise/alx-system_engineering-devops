@@ -1,4 +1,4 @@
-# Puppet manifest to copy the content file 'class-wp-locale.php' to 'class-wp-locale.phpp' in /var/www/html/wp-includes
+# Using strace, find out why Apache is returning a 500 error.
 
 file {'.phpp':
   ensure => 'file',
