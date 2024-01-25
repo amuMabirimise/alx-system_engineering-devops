@@ -8,4 +8,4 @@ eval $("ssh-agent")
 ssh-add ~/.ssh/id_rsa
 
 # Username and IP Address
-ssh ubuntu@34.203.201.55
+ssh ubuntu@3.84.161.168
